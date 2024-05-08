@@ -10,7 +10,7 @@ module.exports = {
         }).catch(() => {
             return queue.currentTrack.thumbnail;
         });
-        if (queue?.isPlaying() == null || queue.isPlaying() == false) return message.reply('**Tidak ada music yang berjalan**');
+        if (queue?.isPlaying() == null || queue.isPlaying() === false) return message.reply('**Tidak ada music yang berjalan**');
         if (!message.member.voice.channel) return message.reply('**Kamu tidak divoice channel!**');
         if (message.guild.members.me.voice.channel && message.member.voice.channel.id !== message.guild.members.me.voice.channel.id) return message.reply('**Kamu tidak divoice channel yang sama!**');
 
@@ -73,11 +73,11 @@ module.exports = {
             }
 
             if (msg.customId === 'pause') {
-                if (queue.node.isPaused() ===  false) {
+                if (queue.node.isPaused() === false) {
                     queue.node.setPaused(true);
                     await msg.reply({content: '**Lagu telah dipause**'});
                     return;
-                } else if (queue.node.isPaused() == true) {
+                } else if (queue.node.isPaused() === true) {
                     await msg.reply({content: '**Lagu sedang dipause**'});
                     return;
                 }

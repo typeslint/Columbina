@@ -19,7 +19,7 @@ module.exports = {
 
         if (message.guild.members.me.voice.channel && message.member.voice.channel.id !== message.guild.members.me.voice.channel.id) return message.reply('**Kamu tidak divoice channel yang sama!**');
 
-        if (message.member.voice.channel.full == true) return message.reply('**Voice channel full!**');
+        if (message.member.voice.channel.full === true) return message.reply('**Voice channel full!**');
 
         if (!args[0]) return message.reply('**Berikan judul untuk memulai lagu**');
 
@@ -36,13 +36,13 @@ module.exports = {
                 searchEngine: "spotifySong",
                 ignoreCache: true,
                 requestedBy: message.author
-            }).then(x => x.tracks[0]);
+            }).then((x) => x.tracks[0]);
         } else {
             track = await player.search(query, {
                 searchEngine: "youtube",
                 ignoreCache: true,
                 requestedBy: message.author
-            }).then(x => x.tracks[0]);
+            }).then((x) => x.tracks[0]);
         }
         if (!track) return message.channel.send({ content: defaultError });
 

@@ -11,10 +11,10 @@ declare module "discord.js" {
 
 client.commands = new Collection();
 const interactionPath = path.join(__dirname, '../commands/interaction');
-const commandInteraction = fs.readdirSync(interactionPath).filter(file => file.endsWith('.js'));
+const commandInteraction = fs.readdirSync(interactionPath).filter((file) => file.endsWith('.js'));
 
 const commandPath = path.join(__dirname, '../commands/message');
-const commandMessage = fs.readdirSync(commandPath).filter(file => file.endsWith('.js'));
+const commandMessage = fs.readdirSync(commandPath).filter((file) => file.endsWith('.js'));
 
 (async () => {
 
