@@ -31,17 +31,31 @@
         "@typescript-eslint/no-unsafe-member-access": 0,
         "@typescript-eslint/no-unused-vars": 1,
         "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/no-misused-promises": ["error", {
+            "checksVoidReturn": {
+                "arguments": false
+            }
+        }],
+        "arrow-parens": ["warn", "always"],
         "brace-style": ["warn", "1tbs"],
         "camelcase": 1,
         "comma-dangle": ["error", "never"],
         "comma-style": ["error", "last"],
         "eol-last": ["warn", "always"],
+        "eqeqeq": ["warn", "smart"],
         "indent": ["warn", 4, {
             "MemberExpression": 0
+        }],
+        "key-spacing": ["warn", {
+            "mode": "strict"
         }],
         "keyword-spacing": ["warn", {
             "after": true,
             "before": true
+        }],
+        "no-multi-spaces": 1,
+        "no-multiple-empty-lines": ["warn", { 
+            "max": 1
         }],
         "no-return-await": 1,
         "no-trailing-spaces": 1,
