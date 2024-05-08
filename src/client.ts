@@ -45,7 +45,6 @@ const player = new Player(client, {
     }
 });
 
-
 (async () => {
     await player.extractors.register(YoutubeExtractor, {});
     await player.extractors.register(SpotifyExtractor, {});

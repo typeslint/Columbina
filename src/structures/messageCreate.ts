@@ -7,7 +7,7 @@ client.on('messageCreate', async (message: Message) => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    const cmd = client.commands.get(command) || client.commands.find(a => a.aliases?.includes(command));
+    const cmd = client.commands.get(command) || client.commands.find((a) => a.aliases?.includes(command));
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     if (!message.guild) return;
@@ -15,7 +15,7 @@ client.on('messageCreate', async (message: Message) => {
     if (!cmd) return;
 
     try {
-        cmd.execute(message, args);
+        await cmd.execute(message, args);
     } catch (error) {
         console.error(error);
         await message.reply(defaultError);

@@ -19,7 +19,7 @@ module.exports = {
 
         if (message.guild.members.me.voice.channel && message.member.voice.channel.id !== message.guild.members.me.voice.channel.id) return message.reply('**Kamu tidak divoice channel yang sama!**');
 
-        if (message.member.voice.channel.full == true) return message.reply('**Voice channel full!**');
+        if (message.member.voice.channel.full === true) return message.reply('**Voice channel full!**');
 
         if (!args[0]) return message.reply('**Berikan judul untuk mencari lagu**');
 
@@ -52,9 +52,9 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setColor('#89e0dc')
         .setThumbnail(track.tracks[0].thumbnail)
-        .setAuthor({name: 'Pilih angka untuk memulai lagu, ketik cancel untuk membatalkan', iconURL: message.client.user.avatarURL({extension: 'png', forceStatic: false, size : 1024})})
-        .setDescription('**1. ' + track.tracks[0].title + '\n' + '2. ' + track.tracks[1].title + '\n' + '3. ' + track.tracks[2].title + '\n' + '4. ' + track.tracks[3].title + '\n'  + '5. ' + track.tracks[4].title + '\n**')
-        .setFooter({text: `Direquest oleh ${message.author.username}`, iconURL: message.author.avatarURL({extension: 'png', forceStatic: false, size : 1024})})
+        .setAuthor({name: 'Pilih angka untuk memulai lagu, ketik cancel untuk membatalkan', iconURL: message.client.user.avatarURL({extension: 'png', forceStatic: false, size: 1024})})
+        .setDescription('**1. ' + track.tracks[0].title + '\n' + '2. ' + track.tracks[1].title + '\n' + '3. ' + track.tracks[2].title + '\n' + '4. ' + track.tracks[3].title + '\n' + '5. ' + track.tracks[4].title + '\n**')
+        .setFooter({text: `Direquest oleh ${message.author.username}`, iconURL: message.author.avatarURL({extension: 'png', forceStatic: false, size: 1024})})
         .setTimestamp();
 
         await message.reply({embeds: [embed]});

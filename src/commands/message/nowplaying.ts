@@ -1,17 +1,23 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, EmbedBuilder, Message, MessageComponentInteraction, player } from '../../client';
+import ytdl from 'ytdl-core';
 
 module.exports = {
     name: 'nowplaying',
     async execute(message: Message) {
         const queue = player.nodes.get(message.guild.id);
-        if (queue?.isPlaying() == null || queue.isPlaying() == false) return message.reply('**Tidak ada music yang berjalan**');
+        const thumbnailInfo = await ytdl.getInfo(queue.currentTrack.url).then((data) => {
+            return data.videoDetails.thumbnails[0].url;
+        }).catch(() => {
+            return queue.currentTrack.thumbnail;
+        });
+        if (queue?.isPlaying() == null || queue.isPlaying() === false) return message.reply('**Tidak ada music yang berjalan**');
         if (!message.member.voice.channel) return message.reply('**Kamu tidak divoice channel!**');
         if (message.guild.members.me.voice.channel && message.member.voice.channel.id !== message.guild.members.me.voice.channel.id) return message.reply('**Kamu tidak divoice channel yang sama!**');
 
         const embed = new EmbedBuilder()
         .setColor('#89e0dc')
         .setTitle(queue.currentTrack.title)
-        .setThumbnail(queue.currentTrack.thumbnail)
+        .setThumbnail(thumbnailInfo)
         .setFooter({text: `Listening on ${queue.currentTrack.source}`, iconURL: message.client.user.avatarURL({extension: 'png', forceStatic: false, size: 1024})})
         .addFields(
             {name: 'Channel', value: `${queue.currentTrack.author}`, inline: true},
@@ -67,11 +73,11 @@ module.exports = {
             }
 
             if (msg.customId === 'pause') {
-                if (queue.node.isPaused() ===  false) {
+                if (queue.node.isPaused() === false) {
                     queue.node.setPaused(true);
                     await msg.reply({content: '**Lagu telah dipause**'});
                     return;
-                } else if (queue.node.isPaused() == true) {
+                } else if (queue.node.isPaused() === true) {
                     await msg.reply({content: '**Lagu sedang dipause**'});
                     return;
                 }
