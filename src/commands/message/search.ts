@@ -31,15 +31,15 @@ module.exports = {
         }
 
         let track: SearchResult;
-        if (new RegExp('\\b' + "https://open.spotify.com/track/" + '\\b', 'i').test(query)) {
+        if (new RegExp('\\b' + 'https://open.spotify.com/track/' + '\\b', 'i').test(query)) {
             track = await player.search(query, {
-                searchEngine: "spotifySearch",
+                searchEngine: 'spotifySearch',
                 ignoreCache: true,
                 requestedBy: message.author
             });
         } else {
             track = await player.search(query, {
-                searchEngine: "youtube",
+                searchEngine: 'youtube',
                 ignoreCache: true,
                 requestedBy: message.author
             });

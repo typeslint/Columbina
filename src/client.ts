@@ -38,8 +38,8 @@ const client = new Client({
 
 const player = new Player(client, {
     ytdlOptions: {
-        quality: "highestaudio",
-        filter: "audioonly",
+        quality: 'highestaudio',
+        filter: 'audioonly',
         highWaterMark: 1 << 25,
         dlChunkSize: 0
     }

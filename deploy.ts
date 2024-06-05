@@ -22,9 +22,9 @@ const rest = new REST({ version: '10' }).setToken(token);
 void (async () => {
 
     try {
-        console.log("Deploying");
+        console.log('Deploying');
         await rest.put(Routes.applicationCommands(clientId), { body: commands });
-        console.log("Deployed");
+        console.log('Deployed');
     } catch (error) {
         console.error(error);
     }

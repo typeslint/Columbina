@@ -12,7 +12,7 @@ module.exports = {
             const srcInfo = ytdl.getInfo(args[0]);
             const mp3Size = (parseInt(ytdl.chooseFormat((await srcInfo).formats, {filter: 'audioonly', quality: 'highestaudio'}).contentLength) / 1024 / 1024).toFixed(2) + ' MB';
             const mp4Size = (parseInt(ytdl.chooseFormat((await srcInfo).formats, {filter: 'audioandvideo', quality: 'highest'}).contentLength) / 1024 / 1024).toFixed(2) + ' MB';
-            const extType: string[] = [ "mp3", "mp4" ];
+            const extType: string[] = [ 'mp3', 'mp4' ];
 
             const embed = new EmbedBuilder()
             .setColor('#89e0dc')
