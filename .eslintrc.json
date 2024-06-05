@@ -60,6 +60,7 @@
         "no-return-await": 1,
         "no-trailing-spaces": 1,
         "no-useless-escape": 0,
+        "quotes": ["warn", "single"],
         "semi": "error",
         "semi-style": ["error", "last"],
         "sort-imports": ["warn", {
