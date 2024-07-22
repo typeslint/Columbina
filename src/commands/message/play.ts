@@ -32,7 +32,8 @@ module.exports = {
 
         let track: Track;
         if (new RegExp('\\b' + 'https://open.spotify.com/track/' + '\\b', 'i').test(query)) {
-            track = await player.search(query, {
+            const splitQuery = query.includes('?si=') ? query.split('?si=')[0].toString() : query;
+            track = await player.search(splitQuery, {
                 searchEngine: 'spotifySong',
                 ignoreCache: true,
                 requestedBy: message.author
