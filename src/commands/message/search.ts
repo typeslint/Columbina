@@ -32,7 +32,8 @@ module.exports = {
 
         let track: SearchResult;
         if (new RegExp('\\b' + 'https://open.spotify.com/track/' + '\\b', 'i').test(query)) {
-            track = await player.search(query, {
+            const splitQuery = query.includes('?si=') ? query.split('?si=')[0].toString() : query;
+            track = await player.search(splitQuery, {
                 searchEngine: 'spotifySearch',
                 ignoreCache: true,
                 requestedBy: message.author
@@ -53,7 +54,7 @@ module.exports = {
         .setColor('#89e0dc')
         .setThumbnail(track.tracks[0].thumbnail)
         .setAuthor({name: 'Pilih angka untuk memulai lagu, ketik cancel untuk membatalkan', iconURL: message.client.user.avatarURL({extension: 'png', forceStatic: false, size: 1024})})
-        .setDescription('**1. ' + track.tracks[0].title + '\n' + '2. ' + track.tracks[1].title + '\n' + '3. ' + track.tracks[2].title + '\n' + '4. ' + track.tracks[3].title + '\n' + '5. ' + track.tracks[4].title + '\n**')
+        .setDescription('**1. ' + `\[${track.tracks[0].title}\]\(${track.tracks[0].url}\)` + '\n' + '2. ' + `\[${track.tracks[1].title}\]\(${track.tracks[1].url}\)` + '\n' + '3. ' + `\[${track.tracks[2].title}\]\(${track.tracks[2].url}\)` + '\n' + '4. ' + `\[${track.tracks[3].title}\]\(${track.tracks[3].url}\)` + '\n' + '5. ' + `\[${track.tracks[4].title}\]\(${track.tracks[4].url}\)` + '\n**')
         .setFooter({text: `Direquest oleh ${message.author.username}`, iconURL: message.author.avatarURL({extension: 'png', forceStatic: false, size: 1024})})
         .setTimestamp();
 
