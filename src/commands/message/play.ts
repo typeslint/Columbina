@@ -3,7 +3,7 @@ import { defaultError } from '../../structures/error';
 
 module.exports = {
     name: 'play',
-    async execute(message: Message, args: ReadonlyArray<string>) {
+    async execute(message: Message<true>, args: ReadonlyArray<string>) {
         const query = args.join(' ').toString();
         const queue = player.nodes.create(message.guild, {
             selfDeaf: true,

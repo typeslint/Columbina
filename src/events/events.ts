@@ -10,15 +10,15 @@ client.on('shardReconnecting', () => {
 });
 
 player.events.on('emptyChannel', async (queue: GuildQueue<unknown>) => {
-    await (<Message>queue.metadata).channel.send('**Tidak ada member di voice**');
+    await (<Message<true>>queue.metadata).channel.send('**Tidak ada member di voice**');
 });
 
 player.events.on('playerStart', async (queue: GuildQueue<unknown>, track: Track) => {
-    await (<Message>queue.metadata).channel.send(`Memutar lagu **${track.title}**`);
+    await (<Message<true>>queue.metadata).channel.send(`Memutar lagu **${track.title}**`);
 });
 
 player.events.on('emptyQueue', async (queue: GuildQueue<unknown>) => {
-    await (<Message>queue.metadata).channel.send('**Tidak ada music yang tersisa**');
+    await (<Message<true>>queue.metadata).channel.send('**Tidak ada music yang tersisa**');
 });
 
 player.events.on('playerError', (queue: GuildQueue<unknown>, error: Error) => {

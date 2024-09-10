@@ -3,7 +3,7 @@ import { Message, QueueRepeatMode, player } from '../../client';
 module.exports = {
     name: 'repeat',
     aliases: ['loop'],
-    async execute(message: Message) {
+    async execute(message: Message<true>) {
         const queue = player.nodes.get(message.guild.id);
         if (queue?.isPlaying() == null || queue.isPlaying() === false) return message.reply('**Tidak ada music yang berjalan**');
         if (!message.member.voice.channel) return message.reply('**Kamu tidak divoice channel!**');
