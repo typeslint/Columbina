@@ -1,7 +1,6 @@
 import path from 'node:path';
 import fs from 'node:fs';
-import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v10';
+import { REST, Routes } from 'discord.js';
 import { clientId, token } from './src/data/config';
 
 const commands: string[] = [];
